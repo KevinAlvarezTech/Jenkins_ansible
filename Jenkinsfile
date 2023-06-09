@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('fetch') {
+    stage('versionAnsible') {
       steps {
         sh '''
           ansible --version
@@ -9,9 +9,11 @@ pipeline {
         '''
       }
     }
-    stage('install') {
+    stage('copiarArchivo') {
       steps {
-        ansiblePlaybook installation: 'ansible', inventory: 'hosts', playbook: 'playbook_instalar.yml'
+        sh '''
+          ansible all -m copy -a "src=/etc/ansible/prueba dest=/tmp/" -u admin_3htp --become --become-user=admin_3htp
+        '''
       }
     }
   }
