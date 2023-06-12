@@ -12,7 +12,7 @@ pipeline {
     stage('copiarArchivo') {
       steps {
         sh '''
-          ansible-playbook playbook1.yml -u admin_3htp
+          ansible-playbook /etc/ansible/playbooks/playbook1.yml -u admin_3htp
         '''
       }
     }
