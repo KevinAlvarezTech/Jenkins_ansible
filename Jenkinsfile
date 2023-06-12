@@ -12,7 +12,7 @@ pipeline {
     stage('copiarArchivo') {
       steps {
         sh '''
-          ansible all -m copy -a ""src=/etc/ansible/prueba dest=/tmp/"" -u admin_3htp --become --become-user=admin_3htp
+          ansible-playbook playbook1.yml -u admin_3htp
         '''
       }
     }
